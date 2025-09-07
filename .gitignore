@@ -1,0 +1,84 @@
+# Ignore the Python virtual environment
+venv/
+__pycache__/
+
+# Ignore the local vector database
+chroma_db/
+demo_chroma_db/
+
+# --- MOST IMPORTANT PART ---
+# Ignore secret files like your .env file
+.env
+
+# Ignore temporary files created by the app
+temp_*
+
+# Ignore IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+
+
+Now, Git will completely ignore these files and folders, so your `authtoken` (which should be in your `.env` file for local use) will never be uploaded.
+
+#### **Step 3: Upload to GitHub**
+
+Now you can safely upload your code.
+
+1.  **Initialize Git:** Open your command prompt in your project folder and run:
+    ```bash
+    git init
+    ```
+2.  **Add and Commit:**
+    ```bash
+    git add .
+    git commit -m "Initial commit of Document QnA RAG system"
+    ```
+3.  **Create and Link a GitHub Repository:**
+    * Go to [GitHub](https://github.com/) and create a new, empty repository.
+    * Copy the commands they provide under "...or push an existing repository..." and run them in your command prompt. They will look like this:
+        ```bash
+        git remote add origin https://github.com/your-username/your-repo-name.git
+        git branch -M main
+        git push -u origin main
+        ```
+
+Your code is now safely on GitHub without any of your secrets!
+
+---
+
+### Part 2: Deploying Your App for Free (Streamlit Community Cloud)
+
+"Deploying" just means putting your app on a public server so anyone can use it. Since you built a Streamlit app, the easiest and best place to deploy it for free is the **Streamlit Community Cloud**.
+
+Think of this as moving your project from your **private kitchen (your computer)** to a **public restaurant (the internet)** where anyone can come and try your creation.
+
+[Image of a chef moving from a home kitchen to a restaurant]
+
+#### **Step 1: Sign Up and Link Your Account**
+
+1.  Go to [share.streamlit.io](https://share.streamlit.io) and sign up for a free account. It's easiest to sign up using your GitHub account.
+2.  Authorize Streamlit to access your GitHub repositories.
+
+#### **Step 2: Deploy the App**
+
+1.  In your Streamlit dashboard, click **"New app"**.
+2.  Select your new GitHub repository from the dropdown. The branch should be `main` and the main file path should be `app.py`.
+3.  **The Secret Sauce:** Click on the **"Advanced settings..."** button. Go to the **"Secrets"** section. This is where you will securely give your online app the `ngrok` authtoken it needs, without ever putting it in your code.
+4.  In the Secrets box, paste this, replacing the placeholder with your actual token:
+    ```
+    NGROK_AUTHTOKEN="YOUR_ACTUAL_NGROK_AUTHTOKEN_HERE"
+    ```
+5.  Click **"Save"**.
+6.  Click the **"Deploy!"** button.
+
+Streamlit will now automatically pull your code from GitHub, install all the libraries from `requirements.txt`, and launch your application on a public URL. This might take a few minutes.
+
+### Part 3: The Final Touch - A Professional `README.md`
+
+Your GitHub repository is the "front door" of your project. A good `README.md` file explains what your project is and how to use it.
+
+**Action:** Replace the content of your `README.md` file with the text below. It makes your project look professional and helps others (and your future self!) understand it.
+
+
+http://googleusercontent.com/immersive_entry_chip/0

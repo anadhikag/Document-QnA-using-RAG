@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG System Guide</title>
+</head>
+<body>
+    <h1>RAG System User Guide</h1>
+    
+    <h2>Getting Started</h2>
+    <p>To get started with the Document QnA system, follow these steps:</p>
+    <ol>
+        <li>Upload your documents (PDF, HTML, Markdown)</li>
+        <li>Click "Index Documents" to process them</li>
+        <li>Ask questions about the content</li>
+        <li>Export your Q&A session</li>
+    </ol>
+    
+    <h2>Supported Formats</h2>
+    <p>The system supports multiple document formats:</p>
+    <ul>
+        <li><strong>PDF</strong>: Extracted page by page with PyMuPDF</li>
+        <li><strong>HTML</strong>: Processed with readability for main content</li>
+        <li><strong>Markdown</strong>: Split by headers and sections</li>
+        <li><strong>URLs</strong>: Web content fetched and processed</li>
+    </ul>
+    
+    <h2>Technical Details</h2>
+    <p>The system uses semantic search to find relevant document sections. 
+    Each query is embedded using the same model as the documents, enabling 
+    accurate similarity matching.</p>
+    
+    <h3>Citation Example</h3>
+    <p>When you ask "What formats are supported?", the system will reference 
+    this page and provide citations like "According to RAG System User Guide, 
+    the system supports PDF, HTML, Markdown, and URLs."</p>
+</body>
+</html>
