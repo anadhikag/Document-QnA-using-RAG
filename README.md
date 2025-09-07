@@ -21,33 +21,37 @@ This is a local-first Question & Answer application that uses Retrieval-Augmente
 - Vector Database: ChromaDB
 - Document Processing: PyMuPDF (PDFs), BeautifulSoup (HTML)
 
-## Getting Started
-Prerequisites:
-Python 3.9+
-Ollama
-Local Setup
+## Prerequisites
+- Python 3.9+
+- Ollama
+- Local Setup
 
 ## Clone the repository:
-git clone [https://github.com/anadhikag/Document-QnA-using-RAG.git](https://github.com/anadhikag/Document-QnA-using-RAG.git)
-cd Document-QnA-using-RAG
+- git clone [https://github.com/anadhikag/Document-QnA-using-RAG.git](https://github.com/anadhikag/Document-QnA-using-RAG.git)
+- cd Document-QnA-using-RAG
 
 ## How to Run on Your Local Machine:
 
-1. Create a virtual environment:
+1. Create a virtual environment
+```
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+```
 
 2. Install dependencies:
-
+```
 pip install -r requirements.txt
+```
 
 3. Download the LLM:
-
+```
 ollama pull phi3
+```
 
 4. Run the application:
-
+```
 streamlit run app.py
+```
 
 ## Running on Google Colab
 If your local machine has limited RAM, you can run this entire project on a free Google Colab GPU. See the detailed Colab instructions for a step-by-step guide: https://github.com/anadhikag/Document-QnA-using-RAG/issues/1
