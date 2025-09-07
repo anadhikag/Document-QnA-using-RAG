@@ -3,12 +3,9 @@ import re
 import requests
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
-
 import pymupdf
 from bs4 import BeautifulSoup
 from readability import Document as ReadabilityDocument
-
-# Use the correct absolute import
 from utils.helpers import clean_text
 
 @dataclass
@@ -21,7 +18,6 @@ class DocumentProcessor:
         self.max_file_size_mb = max_file_size_mb
         self.max_file_size_bytes = max_file_size_mb * 1024 * 1024
 
-    # --- KEY CHANGE: Added 'original_filename' parameter ---
     def ingest_file(self, file_path: str, original_filename: Optional[str] = None) -> List[Document]:
         """Process a file and return a list of documents."""
         source_name = original_filename or os.path.basename(file_path)
@@ -70,7 +66,6 @@ class DocumentProcessor:
     def _process_markdown_file(self, file_path: str, source_name: str) -> List[Document]:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-        # Simple split by paragraphs for markdown
         paragraphs = content.split('\n\n')
         return [Document(page_content=clean_text(p), metadata={'source': source_name}) for p in paragraphs if len(p) > 20]
 

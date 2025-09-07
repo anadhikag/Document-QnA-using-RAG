@@ -1,8 +1,6 @@
 import re
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
-
-# CORRECTED IMPORT: Changed from ..ingestion.document_processor to ingestion.document_processor
 from ingestion.document_processor import Document
 
 @dataclass 
@@ -12,14 +10,12 @@ class Chunk:
     metadata: Dict[str, Any]
 
     def __post_init__(self):
-        # Generate chunk ID if not present
         if 'chunk_id' not in self.metadata:
             source = self.metadata.get('source', 'unknown')
             chunk_index = self.metadata.get('chunk_index', 0)
             self.metadata['chunk_id'] = f"{source}_chunk_{chunk_index}"
 
 class OverlapChunker:
-    # ... (rest of the file content is the same, no need to copy it all here)
     """Text chunker with configurable overlap"""
 
     def __init__(self, chunk_size: int = 1000, overlap: int = 100, min_chunk_size: int = 50):
@@ -50,7 +46,6 @@ class OverlapChunker:
         while start < len(text):
             end = start + self.chunk_size
             if end < len(text):
-                # Try to break at a more natural point
                 boundary = self._find_sentence_boundary(text, end)
                 end = boundary if boundary > start else end
             
@@ -69,7 +64,7 @@ class OverlapChunker:
                 chunk_index += 1
             
             next_start = start + self.chunk_size - self.overlap
-            if next_start <= start: # Prevent infinite loop
+            if next_start <= start: 
                 break
             start = next_start
             
@@ -79,7 +74,6 @@ class OverlapChunker:
         return chunks
 
     def _find_sentence_boundary(self, text: str, preferred_end: int) -> int:
-        # Search backwards from the preferred end for a sentence boundary
         search_range = text[max(0, preferred_end - 100):preferred_end]
         sentence_ends = [m.start() for m in re.finditer(r'[.!?\\n] +', search_range)]
         if sentence_ends:

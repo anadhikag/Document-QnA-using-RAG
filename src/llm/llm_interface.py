@@ -1,8 +1,5 @@
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
-
-# CORRECTED IMPORT: Removed the '..' to make it an absolute import
-# Python knows to look in the 'src' folder for 'chunking'
 from chunking.overlap_chunker import Chunk
 
 class LLMInterface(ABC):
@@ -24,7 +21,6 @@ class LLMInterface(ABC):
         max_tokens: Optional[int] = None,
         temperature: float = 0.1
     ) -> str:
-        """This method is optional for this app, but kept for interface consistency."""
         pass
 
     @property

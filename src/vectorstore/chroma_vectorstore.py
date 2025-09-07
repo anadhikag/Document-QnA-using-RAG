@@ -12,21 +12,14 @@ from embeddings.embedding_interface import EmbeddingInterface
 
 logger = logging.getLogger(__name__)
 
-# --- KEY CHANGE: Implement ChromaDB's EmbeddingFunction interface directly ---
 class CustomEmbeddingFunction(EmbeddingFunction):
     def __init__(self, embeddings: EmbeddingInterface):
         self.embeddings = embeddings
 
-    # --- KEY FIX: The method must be '__call__' and the parameter must be 'input' ---
     def __call__(self, input: List[str]) -> List[List[float]]:
-        """
-        This method is called by ChromaDB to get embeddings.
-        It must accept a parameter named 'input'.
-        """
         return self.embeddings.embed_documents(input)
         
     def name(self) -> str:
-        """Provides a name for the embedding function for ChromaDB."""
         return self.embeddings.model_name
 
 class ChromaVectorStore:
@@ -86,7 +79,6 @@ class ChromaVectorStore:
             return []
 
     def clear_collection(self):
-        """Deletes all embeddings and documents from the collection."""
         try:
             self.client.delete_collection(name=self.collection_name)
             embedding_function = CustomEmbeddingFunction(self.embeddings) if self.embeddings else None

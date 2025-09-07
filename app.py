@@ -3,7 +3,6 @@ import os
 import sys
 from datetime import datetime
 
-# A more robust way to add 'src' to the Python path
 src_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src")
 if src_path not in sys.path:
     sys.path.insert(0, src_path)
@@ -17,7 +16,6 @@ from utils.config import Config
 from utils.helpers import export_to_markdown
 from llm.ollama_provider import OllamaProvider
 
-# Page configuration
 st.set_page_config(
     page_title="Document QnA (Ollama)",
     page_icon="📚",
@@ -37,7 +35,7 @@ def init_components():
     retriever = TopKRetriever(vectorstore, k=config.TOP_K)
     model_name = config.LLM_MODEL.lower().split(":")[1]
     llm = OllamaProvider(model=model_name)
-    st.info(f"✅ Connected to local LLM (Ollama): {model_name}")
+    st.info(f"Connected to local LLM (Ollama): {model_name}")
     return processor, chunker, vectorstore, retriever, llm
 
 def init_session_state():

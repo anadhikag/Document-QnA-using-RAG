@@ -62,10 +62,10 @@ class OllamaProvider(LLMInterface):
                 model=self._model_name,
                 prompt=prompt,
                 options={
-                    "temperature": 0.2, # Slightly increased for better phrasing
+                    "temperature": 0.2,
                     "top_p": 0.9,
                     "num_predict": max_tokens or 512,
-                    "stop": ["\n\n"] # Stop after a paragraph
+                    "stop": ["\n\n"] 
                 }
             )
             answer = response.get('response', '').strip()
@@ -75,15 +75,11 @@ class OllamaProvider(LLMInterface):
             return f"Error from Ollama: {str(e)}"
 
     def _build_qa_prompt(self, context: str, question: str) -> str:
-        """
-        --- NEW, IMPROVED PROMPT ---
-        This prompt is more direct and gives clearer instructions.
-        """
         return f"""You are an expert Q&A assistant. Your task is to answer the user's question based ONLY on the provided context.
 
 Follow these rules:
 1.  Be direct and concise.
-2.  Do not use conversational fluff.
+2.  Use a professional tone.
 3.  If the answer is not in the context, state that clearly.
 4.  Do not mention the source numbers in your answer.
 
