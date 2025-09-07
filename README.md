@@ -1,4 +1,4 @@
-# Document QnA System with Local LLMs (Ollama phi3)
+# Document QnA System using RAG with Ollama (phi3)
 This is a local-first Question & Answer application that uses Retrieval-Augmented Generation (RAG) to answer questions about documents you upload. It runs entirely on your own system (or in a cloud environment like Google Colab) using the Ollama and the phi3 language model. It requires no API keys or external services.
 
 ![demo](demo.gif)
